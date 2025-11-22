@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'weather.dart';
 
 class InfoSystemePage extends StatelessWidget {
   const InfoSystemePage({super.key});
@@ -59,52 +59,60 @@ class InfoSystemePage extends StatelessWidget {
           children: [
             const SizedBox(height: 14),
 
-            // ---------------- WEATHER CARD ----------------
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 18),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [Color(0xFFA2C392), Color(0xFF8FB77B)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+            // ---------------- WEATHER CARD (CLICABLE) ----------------
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const WeatherPage()),
+                );
+              },
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 18),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFA2C392), Color(0xFF8FB77B)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text("Maintenant", style: TextStyle(fontSize: 18)),
-                      SizedBox(height: 6),
-                      Text(
-                        "26°",
-                        style: TextStyle(
-                          fontSize: 48,
-                          fontWeight: FontWeight.bold,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text("Maintenant", style: TextStyle(fontSize: 18)),
+                        SizedBox(height: 6),
+                        Text(
+                          "26°",
+                          style: TextStyle(
+                            fontSize: 48,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text("Max: 28°   Min: 24°"),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const Text("Nuageux", style: TextStyle(fontSize: 18)),
-                      const SizedBox(height: 4),
-                      const Text("Ressenti : 31°"),
-                      const SizedBox(height: 4),
-                      Image.asset(
-                        'assets/icons/cloud_sun.png',
-                        width: 60,
-                        height: 60,
-                        fit: BoxFit.contain,
-                      ),
-                    ],
-                  ),
-                ],
+                        Text("Max: 28°   Min: 24°"),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const Text("Nuageux", style: TextStyle(fontSize: 18)),
+                        const SizedBox(height: 4),
+                        const Text("Ressenti : 31°"),
+                        const SizedBox(height: 4),
+                        Image.asset(
+                          'assets/icons/cloud_sun.png',
+                          width: 60,
+                          height: 60,
+                          fit: BoxFit.contain,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
 
@@ -214,21 +222,14 @@ class InfoSystemePage extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // ICON à gauche
           Icon(icon, size: 30),
-
           const SizedBox(width: 12),
-
-          // TITRE + VALEUR + UNITÉ à droite
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: const TextStyle(fontSize: 16),
-                ),
+                Text(title, style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 6),
                 Row(
                   children: [

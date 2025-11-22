@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'info_systeme_page.dart';
+import 'weather.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: InfoSystemePage(),   // <---- ADD THIS
+      title: 'Smart Pump Power',
+      home: const InfoSystemePage(),
     );
   }
 }

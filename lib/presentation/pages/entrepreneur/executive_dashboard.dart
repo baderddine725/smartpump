@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExecutiveDashboardScreen extends StatelessWidget {
   const ExecutiveDashboardScreen({super.key});
@@ -86,12 +85,6 @@ class ExecutiveDashboardScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-              rows: [
-                _buildSiteRow('Site Nord', '32,000€', '23.1%', '4.3 ans', Colors.green),
-                _buildSiteRow('Site Sud', '28,500€', '19.8%', '5.1 ans', Colors.green),
-                _buildSiteRow('Site Est', '45,200€', '15.2%', '6.6 ans', Colors.orange),
-                _buildSiteRow('Site Ouest', '38,700€', '26.4%', '3.8 ans', Colors.green),
-              ],
           children: [
             const Text(
               'Analyse ROI par Site',
@@ -101,16 +94,22 @@ class ExecutiveDashboardScreen extends StatelessWidget {
             DataTable(
               columns: const [
                 DataColumn(label: Text('Site')),
-                DataColumn(label: Text('Investissement'))),
+                DataColumn(label: Text('Investissement')),
                 DataColumn(label: Text('ROI Annuel')),
                 DataColumn(label: Text('TRI')),
                 DataColumn(label: Text('Statut')),
+              ],
+              rows: [
+                _buildSiteRow('Site Nord', '32,000€', '23.1%', '4.3 ans', Colors.green),
+                _buildSiteRow('Site Sud', '28,500€', '19.8%', '5.1 ans', Colors.green),
+                _buildSiteRow('Site Est', '45,200€', '15.2%', '6.6 ans', Colors.orange),
+                _buildSiteRow('Site Ouest', '38,700€', '26.4%', '3.8 ans', Colors.green),
               ],
             ),
           ],
         ),
       ),
-    )
+    );
   }
 
   DataRow _buildSiteRow(String site, String investment, String roi, String tri, Color statusColor) {

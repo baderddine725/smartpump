@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import '../../../domain/entities/pump_status.dart';
+part of 'pump_status_bloc.dart';
 
 abstract class PumpStatusState extends Equatable {
   const PumpStatusState();

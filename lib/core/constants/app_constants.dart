@@ -23,7 +23,7 @@ class UserRoles {
   static const String entrepreneur = 'entrepreneur';
 }
 
-class PumpStatus {
+class PumpStatusConstants {
   static const String running = 'running';
   static const String stopped = 'stopped';
   static const String error = 'error';

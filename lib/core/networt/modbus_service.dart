@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import '../constants/modbusconstants.dart';
+import '../constants/modbus_constants.dart';
 
 class ModbusService {
   final String deviceApiUrl; // URL du microcontrôleur exposant Modbus (REST ou websocket)

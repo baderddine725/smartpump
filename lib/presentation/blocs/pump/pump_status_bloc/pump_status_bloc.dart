@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../domain/entities/pump_status.dart';
-import '../../../domain/repositories/pump_repository_interface.dart';
+import '../../../../domain/entities/pump_status.dart';
+import '../../../../domain/repositories/pump_repository_interface.dart';
 
 part 'pump_status_event.dart';
 part 'pump_status_state.dart';

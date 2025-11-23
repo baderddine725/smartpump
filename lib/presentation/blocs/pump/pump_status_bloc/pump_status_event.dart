@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'pump_status_bloc.dart';
 
 abstract class PumpStatusEvent extends Equatable {
   const PumpStatusEvent();

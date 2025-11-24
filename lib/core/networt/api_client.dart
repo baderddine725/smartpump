@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../constants/app_constants.dart';
+import 'package:smartpump/core/constants/app_constants.dart';
 
 class ApiClient {
   final String baseUrl;

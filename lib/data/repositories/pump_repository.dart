@@ -1,13 +1,10 @@
-import 'package:http/http.dart' as http;
-import '../../core/constants/app_constants.dart';
-import '../../core/errors/failures.dart';
-import '../models/pump_status_model.dart';
-import '../datasources/pump_remote_data_source.dart';
-import '../../domain/repositories/pump_repository.dart';
-import '../../domain/entities/pump_status.dart';
+import 'package:smartpump/core/errors/failure.dart';
+import 'package:smartpump/data/datasources/remote/pump_remote_data_source.dart';
+import 'package:smartpump/domain/entities/pump_status.dart';
+import 'package:smartpump/domain/repositories/pump_repository_interface.dart';
 
-class PumpRepositoryImpl implements PumpRepository {
-  final PumpRemoteDataSourceImpl remoteDataSource;
+class PumpRepositoryImpl implements PumpRepositoryInterface {
+  final PumpRemoteDataSource remoteDataSource;
 
   PumpRepositoryImpl({required this.remoteDataSource});
 

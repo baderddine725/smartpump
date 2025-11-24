@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../pages/farmer_home_screen.dart';
-import '../pages/technician_dashboard_screen.dart';
-import '../pages/entrepreneur_dashboard_screen.dart';
-import 'app_routes.dart';
+import 'package:smartpump/presentation/pages/entrepreneur/executive_dashboard.dart';
+import 'package:smartpump/presentation/pages/farmer/farmer_home_screen.dart';
+import 'package:smartpump/presentation/pages/technician/technician_dashboard.dart';
+import 'package:smartpump/presentation/routes/app_router.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -13,7 +13,7 @@ class RouteGenerator {
       case AppRoutes.technicianDashboard:
         return MaterialPageRoute(builder: (_) => TechnicianDashboardScreen());
       case AppRoutes.entrepreneurDashboard:
-        return MaterialPageRoute(builder: (_) => EntrepreneurDashboardScreen());
+        return MaterialPageRoute(builder: (_) => const ExecutiveDashboardScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => const Scaffold(body: Text('Page not found')));

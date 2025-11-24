@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../../data/models/pump/pump_error.dart';
-import '../../../../data/repositories/pump_error_repository.dart';
+import 'package:smartpump/data/models/pump/pump_error.dart';
+import 'package:smartpump/data/repositories/pump_error_repository.dart';
 
 part 'pump_error_event.dart';
 part 'pump_error_state.dart';

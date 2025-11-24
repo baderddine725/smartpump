@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../blocs/pump/pump_status_bloc/pump_status_bloc.dart';
-import '../../../domain/repositories/pump_repository_interface.dart';
+import 'package:smartpump/presentation/blocs/pump/pump_status_bloc/pump_status_bloc.dart';
+import 'package:smartpump/domain/repositories/pump_repository_interface.dart';
 
 class FarmerHomeScreen extends StatelessWidget {
   final String farmerId;

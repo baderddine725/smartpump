@@ -1,6 +1,6 @@
-import '../models/pump/pump_status.dart';
-import '../../domain/entities/pump_status.dart';
-import '../../domain/repositories/pump_repository_interface.dart';
+import 'package:smartpump/data/models/pump/pump_status.dart';
+import 'package:smartpump/domain/entities/pump_status.dart';
+import 'package:smartpump/domain/repositories/pump_repository_interface.dart';
 
 class MockPumpRepository implements PumpRepositoryInterface {
   @override

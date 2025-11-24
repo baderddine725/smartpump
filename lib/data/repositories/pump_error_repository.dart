@@ -1,4 +1,4 @@
-import '../../data/models/pump/pump_error.dart';
+import 'package:smartpump/data/models/pump/pump_error.dart';
 
 abstract class PumpErrorRepository {
   Future<List<PumpError>> getPumpErrors(String pumpId);

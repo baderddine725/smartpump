@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../blocs/pump/pump_error_bloc/pump_error_bloc.dart';
-import '../../../data/repositories/pump_error_repository.dart';
+import 'package:smartpump/presentation/blocs/pump/pump_error_bloc/pump_error_bloc.dart';
+import 'package:smartpump/data/repositories/pump_error_repository.dart';
 
 class PumpErrorScreen extends StatelessWidget {
   final String pumpId;

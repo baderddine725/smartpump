@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../blocs/pump_status_bloc/pump_status_bloc.dart';
+import 'package:smartpump/presentation/blocs/pump/pump_status_bloc/pump_status_bloc.dart';
 
 class TechnicianDashboardScreen extends StatelessWidget {
   const TechnicianDashboardScreen({super.key});

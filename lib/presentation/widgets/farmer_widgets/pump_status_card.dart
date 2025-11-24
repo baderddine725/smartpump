@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../domain/entities/pump_status.dart';
+import 'package:smartpump/domain/entities/pump_status.dart';
 
 class PumpStatusCard extends StatelessWidget {
   final PumpStatus pumpStatus;

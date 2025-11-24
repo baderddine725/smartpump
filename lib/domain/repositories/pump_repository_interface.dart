@@ -1,4 +1,4 @@
-import '../entities/pump_status.dart';
+import 'package:smartpump/domain/entities/pump_status.dart';
 
 abstract class PumpRepositoryInterface {
   Future<PumpStatus> getPumpStatus(String pumpId);

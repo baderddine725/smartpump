@@ -1,5 +1,5 @@
 class AppConstants {
-  static const String appName = 'Solar Pump Monitoring';
+  static const String appName = 'smartpump';
   static const String appVersion = '1.0.0';
   
   // Configuration API

@@ -1,4 +1,4 @@
-import '../pump/pump_status.dart';
+import 'package:smartpump/data/models/pump/pump_status.dart';
 
 class Site {
   final String siteId;

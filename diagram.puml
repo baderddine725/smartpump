@@ -1,0 +1,67 @@
+@startuml
+title Séquence: Consultation Statut Pompe - Agriculteur
+
+actor "Agriculteur" as Farmer
+participant FarmerHomeScreen as UI
+participant PumpStatusBloc as Bloc
+participant GetPumpStatus as UseCase
+participant PumpRepository as Repository
+participant ModbusService as Modbus
+participant "Pump Hardware" as Hardware
+
+Farmer -> UI: Ouvre l'application
+UI -> Bloc: add(LoadPumpStatus("pump_001"))
+
+Bloc -> Bloc: emit(PumpStatusLoading())
+Bloc -> UseCase: execute("pump_001")
+
+UseCase -> Repository: getPumpStatus("pump_001")
+
+Repository -> Modbus: readHoldingRegisters(0x0000, 10)
+Modbus -> Hardware: Requête Modbus RTU
+Hardware --> Modbus: Réponse données pompe
+Modbus --> Repository: Données brutes
+
+Repository -> Repository: parseModbusData()
+Repository --> UseCase: PumpStatus object
+
+UseCase --> Bloc: PumpStatus
+Bloc -> Bloc: emit(PumpStatusLoaded(pumpStatus))
+
+UI <- Bloc: State: PumpStatusLoaded
+UI -> UI: rebuild()
+UI -> Farmer: Affiche statut pompe\net contrôles simples
+
+alt statut == PROBLEME_DEMARRAGE
+    Farmer -> UI: Clique "Démarrer"
+    UI -> Bloc: add(StartPumpRequested("pump_001"))
+
+    %% Double-check côté UseCase avant d'exécuter la commande
+    Bloc -> UseCase: executeStart("pump_001")
+
+    alt usecase vérifie statut == PROBLEME_DEMARRAGE
+        UseCase -> Repository: startPump("pump_001")
+
+        Repository -> Modbus: writeSingleRegister(0x1000, 1)
+        Modbus -> Hardware: Commande démarrage
+        Hardware --> Modbus: ACK
+        Modbus --> Repository: Succès
+
+        Repository --> UseCase: void
+        UseCase --> Bloc: void
+        Bloc -> Bloc: emit(PumpOperationSuccess())
+
+        UI <- Bloc: State: PumpOperationSuccess
+        UI -> Farmer: Affiche confirmation\net met à jour l'interface
+    else
+        UseCase -> Bloc: emit(PumpOperationFailed("Status not suitable"))
+        Bloc -> Bloc: emit(PumpOperationFailed())
+        UI <- Bloc: State: PumpOperationFailed
+        UI -> Farmer: Affiche erreur: "Statut de la pompe incompatible"
+    end
+else
+    Farmer -> UI: Clique "Démarrer" (ou bouton désactivé)
+    UI -> Farmer: Bouton "Démarrer" désactivé\nou message: "Démarrage non autorisé"
+end
+
+@enduml
